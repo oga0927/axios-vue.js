@@ -18,6 +18,14 @@
       コメントをサーバーに送る
     </button>
     <h2>掲示板</h2>
+    <div
+      v-for="post in posts"
+      :key="post.name"
+    >
+      <br>
+      <div>名前：{{ post.fields.name.stringValue }}</div>
+      <div>コメント：{{ post.fields.comment.stringValue }}</div>
+    </div>
   </div>
 </template>
 
@@ -27,34 +35,37 @@ export default {
   data() {
     return {
       name: "",
-      comment: ""
+      comment: "",
+      posts: []
     };
+  },
+  created() {
+    axios.get("https://firestore.googleapis.com/v1/projects/vuejs-http-316b3/databases/(default)/documents/comment"
+    )
+    .then(response => {
+      this.posts = response.data.documents;
+    });
   },
   methods: {
     createComment() {
       axios.post(
-        "https://firestore.googleapis.com/v1/projects/vuejs-http-a8d56 /databases/(default)/documents/comments",
+        "https://firestore.googleapis.com/v1/projects/vuejs-http-316b3/databases/(default)/documents/comment",
         {
           fields: {
             name: {
-              stringValue: this.name
+              stringValue:this.name
             },
             comment: {
-              stringValue: this.comment
+              stringValue:this.comment
             }
           }
         }
-      )
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-      this.name ='';
-      this.comment = '';
+      );
+      this.name = "";
+      this.comment = "";
     }
   }
+
 };
 </script>
 
