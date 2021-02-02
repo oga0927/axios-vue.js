@@ -40,17 +40,14 @@ export default {
     };
   },
   created() {
-    axios.get("https://firestore.googleapis.com/v1/projects/vuejs-http-316b3/databases/(default)/documents/comment"
-    )
-    .then(response => {
+    axios.get("/comments").then(response => {
       this.posts = response.data.documents;
     });
   },
   methods: {
     createComment() {
       axios.post(
-        "https://firestore.googleapis.com/v1/projects/vuejs-http-316b3/databases/(default)/documents/comment",
-        {
+        "/comments", {
           fields: {
             name: {
               stringValue:this.name
