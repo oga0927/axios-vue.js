@@ -6,6 +6,10 @@ Vue.config.productionTip = false
 
 axios.defaults.baseURL = "https://firestore.googleapis.com/v1/projects/vuejs-http-316b3/databases/(default)/documents";
 
+axios.interceptors.request.use();
+axios.interceptors.response.use();
+
+
 new Vue({
   render: h => h(App),
 }).$mount('#app')
