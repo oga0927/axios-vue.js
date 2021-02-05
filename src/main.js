@@ -16,7 +16,15 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-axios.interceptors.response.use();
+axios.interceptors.response.use(
+  response => {
+    console.log('interceptors.response', response);
+    return response;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+);
 
 
 new Vue({
