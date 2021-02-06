@@ -26,6 +26,8 @@ axios.interceptors.response.use(
   }
 );
 
+axios.interceptors.request.eject();
+
 
 new Vue({
   render: h => h(App),
