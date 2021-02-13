@@ -15,7 +15,7 @@
     />
     <br><br>
     <button @click="createComment">
-      コメントをサーバーに送る
+      送信
     </button>
     <h2>掲示板</h2>
     <div
