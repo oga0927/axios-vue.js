@@ -17,7 +17,7 @@ export default new Vuex.Store({
     login( { commit }, authData) {
       axios
       .post(
-        '/accounts:signUp?key=AIzaSyAm6_g7BdU9ncrEl50is9JhtZ1sSQP5IoU', 
+        , 
         {
           email: authData.email,
           password: authData.password,
@@ -30,7 +30,7 @@ export default new Vuex.Store({
     register( { commit }, authData) {
       axios
       .post(
-        '/accounts:signUp?key=AIzaSyAm6_g7BdU9ncrEl50is9JhtZ1sSQP5IoU', 
+        '', 
         {
           email: authData.email,
           password: authData.password,
